@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D04F5DD2-B54E-743C-DC34-03491AA76C17" name="Metric">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:34:14 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_Metric" id="BCD83F52-7620-1B71-A685-1C25C09EC278">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:34:20 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MetricDate" id="AC958BD0-A2EC-4248-02FE-8CD8B1B8B85C">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:34:27 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ElectricityProvided" id="DA02DBAB-23A5-AE14-F9A0-EBA83E54130C">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:34:41 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NuclearParticipation" id="30A88825-AC86-3F2A-E820-FDF7C3C3CA6E">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:35:03 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="OperationalEfficiency" id="437FEF87-C3A9-43E6-9D89-2813707FB79A">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:35:22 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_NuclearPlant" id="10377866-3813-C25F-D925-F6068A6A4944">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:42:16 UTC</createdTime>
+<generatorID>D90905A9-605C-1782-2D1B-B4EBF8738FCE</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<referedAttribute>02E7AEEE-A1E5-823D-2C5F-5CAC0767DBC1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D6C22889-CFC4-9FFE-738E-0B8D2455FBCA" name="Metric PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:34:39 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BCD83F52-7620-1B71-A685-1C25C09EC278</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

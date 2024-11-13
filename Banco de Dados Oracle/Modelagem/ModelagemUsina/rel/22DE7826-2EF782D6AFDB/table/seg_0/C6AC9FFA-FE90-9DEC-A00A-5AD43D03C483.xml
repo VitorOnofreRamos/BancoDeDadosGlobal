@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C6AC9FFA-FE90-9DEC-A00A-5AD43D03C483" name="Sensor">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>190C0D19-9D2B-7BD7-C83F-E945EE789717</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Sensor" id="38AB4D32-866F-D957-6BAA-9E77145C2BC9">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>6B50A4F0-AFB2-6D4F-1621-60B8280AD19E</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="3ED7808A-8B99-7A7D-4424-CA023CDB8CA0">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>C3E80A02-0E0D-48F2-D830-19E52AD59500</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MachinaryLocation" id="A3AE58D1-5939-52E5-C461-A88F08F20705">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>BF530DEA-61E3-2D03-8DB3-44AEBE1CC72A</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Status" id="DA820785-2360-B405-162E-A76BF59D19E5">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>C975FC1B-DF47-75C7-42C2-B042A375A337</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NuclearPlant_ID_NuclearPlant" id="6BA9D2C3-BC69-8E5A-A591-62106CD01D15">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>B5BE328C-6C55-C7DF-B6D1-3595608CDB84</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="90321C44-9439-ED80-C76B-86B328B2DE24" referredColumn="1E889D2F-7F9D-1B2E-32E6-29B1059CD8D4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2F54A863-29C3-0EC0-1F60-B16B5DD60522" name="Sensor_PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>135E3397-FF72-40A0-B125-343C5B262454</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38AB4D32-866F-D957-6BAA-9E77145C2BC9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7374201F-4366-1959-F64F-ED5AE5748D2E" name="Sensor_NuclearPlant_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>52E9B266-F850-EB68-A9F9-82BE3018B085</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6BA9D2C3-BC69-8E5A-A591-62106CD01D15"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

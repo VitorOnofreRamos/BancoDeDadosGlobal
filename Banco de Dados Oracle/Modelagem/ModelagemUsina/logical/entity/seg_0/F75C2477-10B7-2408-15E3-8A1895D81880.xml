@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F75C2477-10B7-2408-15E3-8A1895D81880" name="Alert">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:40:32 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_Alert" id="10A92182-CE61-0515-E2A9-8C330F4F7D8D">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:40:37 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Description" id="81B109A2-201C-71C8-DB66-95C002CB3A22">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:40:49 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TriggeredAt" id="2BCE9392-8BD5-8773-975E-56C562A8C99D">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:41:02 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ResolvedAt" id="E581D0DC-EDB1-07D4-7095-C3E9D5F207F9">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:41:16 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IsResolved" id="84BEE922-8CC7-36C4-C639-03C48FCBE786">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:41:27 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_Analysis" id="720B7E59-F344-0D69-E46E-E4DF4A8A1698">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:42:37 UTC</createdTime>
+<generatorID>F3276BA1-2B62-98D1-4A3A-87BEF430874C</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<referedAttribute>DC065198-9837-E5F5-2721-304A6C4C59B0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="EB68A14B-78AE-A3B1-5920-9B741C2D67CF" name="Alert PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:41:48 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>10A92182-CE61-0515-E2A9-8C330F4F7D8D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

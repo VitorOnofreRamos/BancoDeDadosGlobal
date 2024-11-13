@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7A09A23D-DC5D-0F2E-5239-C7BFB96177C5" containerWithKeyObject="04D1418F-3EC3-3AA0-8A55-85C397993320" localFKIndex="11B176CD-8430-42C4-0BA3-E4054C047939" name="Metric_NuclearPlant_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>D90905A9-605C-1782-2D1B-B4EBF8738FCE</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<referredTableLongName>NuclearPlant</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F929247F-D1B8-6F1F-D971-7A254EAE8109</referredTableID>
+<keyObject>F4CE7DBD-3290-50BC-1EE6-E96E54D54A18</keyObject>
+<referredKeyID>F4CE7DBD-3290-50BC-1EE6-E96E54D54A18</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_NuclearPlant</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

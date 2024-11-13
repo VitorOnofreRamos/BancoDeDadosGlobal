@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="95668BF8-95BA-F891-D9F8-76D103178DF1" name="Alert">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>F75C2477-10B7-2408-15E3-8A1895D81880</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Alert" id="8F265AE7-6303-2DD1-F57C-EA2B87A35FAB">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>10A92182-CE61-0515-E2A9-8C330F4F7D8D</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="109B34C7-BEC5-CF4D-9FDC-78019CA90A12">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>81B109A2-201C-71C8-DB66-95C002CB3A22</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TriggeredAt" id="6851F75F-D475-606F-7FEB-B104F53627BE">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>2BCE9392-8BD5-8773-975E-56C562A8C99D</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ResolvedAt" id="A13E8297-F313-2A1E-B65D-B5599D7CF545">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>E581D0DC-EDB1-07D4-7095-C3E9D5F207F9</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IsResolved" id="5009D8A9-A87C-66EC-D301-A0381C21C261">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>84BEE922-8CC7-36C4-C639-03C48FCBE786</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Analysis_ID_Analysis" id="E2A40960-E1B3-5CA5-9B84-6204D21E4E03">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>720B7E59-F344-0D69-E46E-E4DF4A8A1698</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6CBEBFF9-E9B8-0909-FAD8-E1F49A559381" referredColumn="5DCD987D-4B4B-36C4-8D92-8DD48BB3A36C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="931A90AC-9D59-A97E-7AEF-131B1B308A9D" name="Alert_PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>EB68A14B-78AE-A3B1-5920-9B741C2D67CF</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F265AE7-6303-2DD1-F57C-EA2B87A35FAB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="58ED27C5-B98B-0ABA-C52B-1E6A4CD2C179" name="Alert_Analysis_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>F3276BA1-2B62-98D1-4A3A-87BEF430874C</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2A40960-E1B3-5CA5-9B84-6204D21E4E03"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

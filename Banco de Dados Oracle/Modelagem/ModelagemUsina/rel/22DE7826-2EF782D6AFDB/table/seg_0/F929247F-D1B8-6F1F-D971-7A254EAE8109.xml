@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F929247F-D1B8-6F1F-D971-7A254EAE8109" name="NuclearPlant">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>566456D5-D1FD-F412-36B8-569B3D4D6004</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_NuclearPlant" id="1E889D2F-7F9D-1B2E-32E6-29B1059CD8D4">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>02E7AEEE-A1E5-823D-2C5F-5CAC0767DBC1</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="A27A1717-3163-46AE-C257-27A338F92A14">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>F88F2760-8907-D028-2C95-5E735A23BC25</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FullCapacity" id="C1B07844-1F4F-7C36-9C7F-81E61FC3CC47">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>5054170E-2D02-DF74-6174-78B1E4E4D34A</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeberOfReactors" id="3BC0F6FB-DDCA-8D40-92D9-38C3CA0DE09B">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>6C66EF82-4A4C-797A-4BFB-24158401FDE7</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F4CE7DBD-3290-50BC-1EE6-E96E54D54A18" name="NuclearPlant_PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>DD316EE2-9E73-705E-3453-55C62EA072E0</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E889D2F-7F9D-1B2E-32E6-29B1059CD8D4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

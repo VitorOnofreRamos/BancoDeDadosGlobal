@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6CBEBFF9-E9B8-0909-FAD8-E1F49A559381" containerWithKeyObject="95668BF8-95BA-F891-D9F8-76D103178DF1" localFKIndex="58ED27C5-B98B-0ABA-C52B-1E6A4CD2C179" name="Alert_Analysis_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>F3276BA1-2B62-98D1-4A3A-87BEF430874C</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<referredTableLongName>Analysis</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>3720CD23-6951-B9A6-EC13-37A1ACBB4462</referredTableID>
+<keyObject>7731FE16-E1D1-3A83-1B7C-5E5E14E0194B</keyObject>
+<referredKeyID>7731FE16-E1D1-3A83-1B7C-5E5E14E0194B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_Analysis</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

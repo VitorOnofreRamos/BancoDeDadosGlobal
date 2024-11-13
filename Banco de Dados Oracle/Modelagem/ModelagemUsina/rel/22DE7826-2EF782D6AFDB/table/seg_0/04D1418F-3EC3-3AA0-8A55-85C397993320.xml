@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04D1418F-3EC3-3AA0-8A55-85C397993320" name="Metric">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>D04F5DD2-B54E-743C-DC34-03491AA76C17</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Metric" id="0A9413A0-FD02-5BEB-1F86-ECCF0B73D11E">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>BCD83F52-7620-1B71-A685-1C25C09EC278</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MetricDate" id="DF3B1731-6902-B24E-6E98-B573ECB71338">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>AC958BD0-A2EC-4248-02FE-8CD8B1B8B85C</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ElectricityProvided" id="B3D7117A-02D9-017C-8B83-D716A20C14F2">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>DA02DBAB-23A5-AE14-F9A0-EBA83E54130C</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NuclearParticipation" id="2D51140E-7807-FA79-2011-3B3D7C86C130">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>30A88825-AC86-3F2A-E820-FDF7C3C3CA6E</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OperationalEfficiency" id="82C5B5EA-BE23-82FC-0759-B705C260DFD2">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>437FEF87-C3A9-43E6-9D89-2813707FB79A</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NuclearPlant_ID_NuclearPlant" id="543F9E88-BAC7-5536-B26A-99125A7F85BB">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>10377866-3813-C25F-D925-F6068A6A4944</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7A09A23D-DC5D-0F2E-5239-C7BFB96177C5" referredColumn="1E889D2F-7F9D-1B2E-32E6-29B1059CD8D4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CA4C0258-DCF8-0404-0507-1B0E7E0DE084" name="Metric_PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>D6C22889-CFC4-9FFE-738E-0B8D2455FBCA</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A9413A0-FD02-5BEB-1F86-ECCF0B73D11E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11B176CD-8430-42C4-0BA3-E4054C047939" name="Metric_NuclearPlant_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-13 16:49:42 UTC</createdTime>
+<generatorID>D90905A9-605C-1782-2D1B-B4EBF8738FCE</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="543F9E88-BAC7-5536-B26A-99125A7F85BB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
