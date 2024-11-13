@@ -44,7 +44,7 @@ CREATE TABLE Analysis (
     FOREIGN KEY (id_sensor) REFERENCES Sensor(ID_Sensor)
 );
 
-CREATE TABLE alert (
+CREATE TABLE Alert (
     ID_Alert                    NUMBER PRIMARY KEY,
     AlertDescription            VARCHAR2(100) NOT NULL,
     TriggeredAt                 TIMESTAMP DEFAULT SYSDATE NOT NULL,

@@ -27,30 +27,28 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Value" id="8CED4853-E286-4302-C332-06EE4E4D56C5">
+<Attribute name="AnalysisValue" id="8CED4853-E286-4302-C332-06EE4E4D56C5">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:39:24 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
 <engineerTo>
 <item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Timestamp" id="AD70BCFA-A97F-2F82-67A4-5C3A6A399C02">
+<Attribute name="AnalysisTimestamp" id="AD70BCFA-A97F-2F82-67A4-5C3A6A399C02">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:39:33 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
 <engineerTo>
 <item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="ID_Sensor" id="A0C71FED-3329-3168-67E2-75B0BC68E4D3">
@@ -73,8 +71,9 @@
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:39:58 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Name" id="A27A1717-3163-46AE-C257-27A338F92A14">
+<Column name="PlantName" id="A27A1717-3163-46AE-C257-27A338F92A14">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>F88F2760-8907-D028-2C95-5E735A23BC25</generatorID>

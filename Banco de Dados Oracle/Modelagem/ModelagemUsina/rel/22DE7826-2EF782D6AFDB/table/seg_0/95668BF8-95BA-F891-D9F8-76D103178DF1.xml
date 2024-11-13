@@ -19,12 +19,11 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Description" id="109B34C7-BEC5-CF4D-9FDC-78019CA90A12">
+<Column name="AlertDescription" id="109B34C7-BEC5-CF4D-9FDC-78019CA90A12">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>81B109A2-201C-71C8-DB66-95C002CB3A22</generatorID>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -37,10 +36,9 @@
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>2BCE9392-8BD5-8773-975E-56C562A8C99D</generatorID>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -52,7 +50,7 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -61,7 +59,6 @@
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>84BEE922-8CC7-36C4-C639-03C48FCBE786</generatorID>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT006</logicalDatatype>

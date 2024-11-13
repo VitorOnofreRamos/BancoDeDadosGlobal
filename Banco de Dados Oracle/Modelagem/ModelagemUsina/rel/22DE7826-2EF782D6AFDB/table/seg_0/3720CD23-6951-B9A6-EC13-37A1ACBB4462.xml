@@ -19,27 +19,25 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Value" id="9F46019E-05F9-4F45-49E2-029F957D2A21">
+<Column name="AnalysisValue" id="9F46019E-05F9-4F45-49E2-029F957D2A21">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>8CED4853-E286-4302-C332-06EE4E4D56C5</generatorID>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Timestamp" id="C800E002-DA26-DB42-7992-B9613779CD91">
+<Column name="AnalysisTimestamp" id="C800E002-DA26-DB42-7992-B9613779CD91">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>AD70BCFA-A97F-2F82-67A4-5C3A6A399C02</generatorID>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

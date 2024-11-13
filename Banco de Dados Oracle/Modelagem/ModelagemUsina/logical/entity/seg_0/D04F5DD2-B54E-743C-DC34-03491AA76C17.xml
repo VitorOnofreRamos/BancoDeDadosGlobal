@@ -36,7 +36,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="ElectricityProvided" id="DA02DBAB-23A5-AE14-F9A0-EBA83E54130C">
@@ -95,8 +95,9 @@
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:34:39 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

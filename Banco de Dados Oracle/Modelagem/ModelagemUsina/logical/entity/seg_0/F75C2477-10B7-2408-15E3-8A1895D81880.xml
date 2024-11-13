@@ -27,14 +27,13 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Description" id="81B109A2-201C-71C8-DB66-95C002CB3A22">
+<Attribute name="AlertDescription" id="81B109A2-201C-71C8-DB66-95C002CB3A22">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:40:49 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
 <engineerTo>
 <item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -48,10 +47,9 @@
 <engineerTo>
 <item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="ResolvedAt" id="E581D0DC-EDB1-07D4-7095-C3E9D5F207F9">
@@ -64,7 +62,7 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="IsResolved" id="84BEE922-8CC7-36C4-C639-03C48FCBE786">
@@ -74,7 +72,6 @@
 <engineerTo>
 <item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT006</logicalDatatype>
@@ -101,8 +98,9 @@
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:41:48 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

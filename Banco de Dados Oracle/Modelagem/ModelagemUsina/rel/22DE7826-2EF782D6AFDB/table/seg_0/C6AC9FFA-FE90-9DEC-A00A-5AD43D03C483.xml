@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Name" id="3ED7808A-8B99-7A7D-4424-CA023CDB8CA0">
+<Column name="SensorName" id="3ED7808A-8B99-7A7D-4424-CA023CDB8CA0">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>C3E80A02-0E0D-48F2-D830-19E52AD59500</generatorID>

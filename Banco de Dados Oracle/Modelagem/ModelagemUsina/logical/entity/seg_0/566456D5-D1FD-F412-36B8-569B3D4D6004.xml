@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Name" id="F88F2760-8907-D028-2C95-5E735A23BC25">
+<Attribute name="PlantName" id="F88F2760-8907-D028-2C95-5E735A23BC25">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:32:38 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
@@ -70,8 +70,9 @@
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:33:05 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Name" id="C3E80A02-0E0D-48F2-D830-19E52AD59500">
+<Attribute name="SensorName" id="C3E80A02-0E0D-48F2-D830-19E52AD59500">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:36:59 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
@@ -86,8 +86,9 @@
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:37:16 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
