@@ -49,7 +49,7 @@ CREATE TABLE Alert (
     AlertDescription            VARCHAR2(100) NOT NULL,
     TriggeredAt                 TIMESTAMP DEFAULT SYSDATE NOT NULL,
     ResolvedAt                  TIMESTAMP,
-    IsResolved                  CHAR(1) DEFAULT 'N' NOT NULL,
+    IsResolved                  CHAR(1) DEFAULT '0' NOT NULL,
     id_analysis                 NUMBER NOT NULL,
     FOREIGN KEY (id_analysis) REFERENCES Analysis(ID_Analysis)
 );
