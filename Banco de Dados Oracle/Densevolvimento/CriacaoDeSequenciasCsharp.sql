@@ -1,4 +1,4 @@
-set SERVEROUTPUT on;.
+set SERVEROUTPUT on;
 
 CREATE OR REPLACE PROCEDURE Create_Sequence_For_Table (
     p_table_name IN VARCHAR2

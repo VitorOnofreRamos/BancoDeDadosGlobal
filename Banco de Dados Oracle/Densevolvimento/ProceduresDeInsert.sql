@@ -8,8 +8,8 @@ Create or replace PROCEDURE Insert_NuclearPlant(
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_NuclearPlant(p_plantName, p_fullCapacity, p_numberOfReactors) THEN
-        INSERT INTO NuclearPlant (ID_NUCLEARPLANT, PlantName, FullCapacity, NumberOfReactors)
-        VALUES (seq_nuclearplant.NEXTVAL, p_plantName, p_fullCapacity, p_numberOfReactors);
+        INSERT INTO NuclearPlant (PlantName, FullCapacity, NumberOfReactors)
+        VALUES (p_plantName, p_fullCapacity, p_numberOfReactors);
 
         DBMS_OUTPUT.PUT_LINE('Usina inserida com sucesso.');
         COMMIT;
