@@ -2,7 +2,7 @@ set SERVEROUTPUT on;
 
 Create or replace FUNCTION Is_Null_Or_Empty(value IN VARCHAR2) RETURN BOOLEAN IS
 BEGIN
-    RETURN (value IS NULL OR TRIM(value) = '' OR NOT REGEXP_LIKE(value, '^[\p{L}\d][\p{L}\d\s]*$'));
+    RETURN (value IS NULL OR TRIM(value) = '' OR NOT REGEXP_LIKE(value, '^[A-Za-z0-9À-ÖØ-öø-ÿ][A-Za-z0-9À-ÖØ-öø-ÿ ]*$'));
 END Is_Null_Or_Empty;
 /
 
@@ -236,7 +236,7 @@ END Valida_Insert_Sensor;
 /
 
 BEGIN
-    IF Valida_Insert_Sensor('Nome do Sensor', 'Localizacao do Sensor', '0', 1) THEN
+    IF Valida_Insert_Sensor('Nome do Sensor', 'Localização do Sensor', '1', 1) THEN
         DBMS_OUTPUT.PUT_LINE('A');
     END IF;
 END;
@@ -247,10 +247,27 @@ END;
 
 CREATE OR REPLACE FUNCTION Valida_Insert_Analysis(
     p_AnalysisValue           Analysis.AnalysisValue%TYPE,
+    p_AnalysisTimestamp       Analysis.AnalysisTimestamp%TYPE,
     p_id_sensor               Analysis.id_sensor%TYPE
 ) RETURN BOOLEAN IS
     invalid_analysis_value EXCEPTION;
+    invalid_analysis_timestamp EXCEPTION;
+    invalid_id_sensor EXCEPTION;
+    v_count NUMBER;
 BEGIN
+    -- Verificar se a Usina exsiste
+    SELECT COUNT(*) INTO v_count
+    FROM sensor
+    WHERE id_sensor = p_id_sensor;
+    IF v_count = 0 OR p_id_sensor IS NULL THEN
+        RAISE invalid_id_sensor;
+    END IF;
+
+    -- Verifica se AnalysisTimestamp não é no futuro
+    IF p_AnalysisTimestamp IS NULL OR p_AnalysisTimestamp > CURRENT_TIMESTAMP THEN
+        RAISE invalid_analysis_timestamp;
+    END IF;
+
     -- Verifica se o valor da análise é positivo
     IF p_AnalysisValue IS NULL OR p_AnalysisValue < 0 THEN
         RAISE invalid_analysis_value;
@@ -263,6 +280,14 @@ EXCEPTION
     WHEN invalid_analysis_value THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Valor da análise inválido. Deve ser positivo.');
         RETURN FALSE;
+        
+    WHEN invalid_analysis_timestamp THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: A data/hora não pode ser no futuro.');
+        RETURN FALSE;
+        
+    WHEN invalid_id_sensor THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Sensor não consta no Banco de Dados');
+        RETURN FALSE;
 
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
@@ -270,24 +295,45 @@ EXCEPTION
 END Valida_Insert_Analysis;
 /
 
+BEGIN
+    IF Valida_Insert_Analysis(123, TIMESTAMP '2024-11-11 12:30:00', 2) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
+/
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION Valida_Insert_Alert(
     p_AlertDescription         Alert.AlertDescription%TYPE,
+    p_TriggeredAt              Alert.TriggeredAt%TYPE,
+    p_ResolvedAt               Alert.ResolvedAt%TYPE,
     p_IsResolved               Alert.IsResolved%TYPE,
     p_id_analysis              Alert.id_analysis%TYPE
 ) RETURN BOOLEAN IS
     invalid_description EXCEPTION;
+    invalid_trigger EXCEPTION;
+    invalid_resolution EXCEPTION;
     invalid_isresolved EXCEPTION;
+    invalid_id_analysis EXCEPTION;
+    v_conut NUMBER;
 BEGIN
+    -- Verificar se a Analysis exsiste
+    SELECT COUNT(*) INTO v_count
+    FROM analysis
+    WHERE id_analysis = id_analysis;
+    IF v_count = 0 OR id_analysis IS NULL THEN
+        RAISE invalid_id_analysis;
+    END IF;
+
     -- Verifica se a descrição do alerta está vazia ou não segue o padrão
-    IF Is_Null_Or_Empty(p_AlertDescription) OR NOT REGEXP_LIKE(p_AlertDescription, '^[A-Za-z0-9 ]+$') THEN
+    IF Is_Null_Or_Empty(p_AlertDescription) THEN
         RAISE invalid_description;
     END IF;
 
-    -- Verifica se IsResolved tem valor 'Y' ou 'N'
-    IF p_IsResolved IS NULL OR NOT p_IsResolved IN ('Y', 'N') THEN
+    -- Verifica se IsResolved tem valor '0'(Não) ou '1'(Sim)
+    IF p_IsResolved IS NULL OR NOT p_IsResolved IN ('0', '1') THEN
         RAISE invalid_isresolved;
     END IF;
 
@@ -307,4 +353,11 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
         RETURN FALSE;
 END Valida_Insert_Alert;
+/
+
+BEGIN
+    IF Valida_Insert_Alert(, TIMESTAMP '2024-11-11 12:30:00', 2) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
 /
