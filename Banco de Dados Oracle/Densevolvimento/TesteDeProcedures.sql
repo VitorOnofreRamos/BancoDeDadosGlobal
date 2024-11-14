@@ -31,7 +31,7 @@ EXCEPTION
 END insert_nuclearplant;
 /
 
-EXECUTE insert_nuclearplant('Usina Teste' , 1212, 324-12);
+EXECUTE insert_nuclearplant('Usina Power On' , 300, 2);
 /
 
 --------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ EXCEPTION
 END Insert_Metric;
 /
 
-EXECUTE insert_Metric(TIMESTAMP '2024-05-02 07:20:00', 654, 70, 93, 1);
+EXECUTE insert_Metric(TIMESTAMP '2024-11-10 07:20:00', 700, 50, 80, 1);
 /
 
 --------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Sensor(p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant) THEN
         INSERT INTO Sensor (ID_SENSOR, SensorName, MachinaryLocation, Status, id_nuclearplant)
-        VALUES (seq_metric.NEXTVAL, p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant);
+        VALUES (seq_sensor.NEXTVAL, p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant);
 
         DBMS_OUTPUT.PUT_LINE('Sensor inserido com sucesso.');
         COMMIT;
@@ -108,7 +108,7 @@ EXCEPTION
 END Insert_Sensor;
 /
 
-EXECUTE Insert_Sensor('Nome do Sensor', 'Localização do Sensor', '1', 1);
+    EXECUTE Insert_Sensor('Sensor de Temperatura do Reator', 'No maquinário do reator', '1', 1);
 /
 
 --------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Analysis(p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor) THEN
         INSERT INTO Analysis (ID_ANALYSIS, AnalysisValue, AnalysisTimestamp, id_sensor)
-        VALUES (seq_metric.NEXTVAL, p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor);
+        VALUES (seq_analysis.NEXTVAL, p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor);
 
         DBMS_OUTPUT.PUT_LINE('Analise inserida com sucesso.');
         COMMIT;
@@ -145,8 +145,44 @@ EXCEPTION
 END Insert_Analysis;
 /
 
-EXECUTE Insert_Analysis(123, TIMESTAMP '2024-11-11 12:30:00', 2);
+EXECUTE Insert_Analysis(300, TIMESTAMP '2024-11-11 12:52:07', 1);
 /
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+
+Create or replace PROCEDURE Insert_Alert(
+    p_AlertDescription             Alert.AlertDescription%TYPE,
+    p_TriggeredAt                  Alert.TriggeredAt%TYPE,
+    p_ResolvedAt                   Alert.ResolvedAT%TYPE,
+    p_IsResolved                   Alert.IsResolved%TYPE,
+    p_id_analysis                  Alert.id_analysis%TYPE
+) IS
+BEGIN
+    -- Validar dados da inserção
+    IF Valida_Insert_Alert (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis) THEN
+        INSERT INTO Alert (ID_ALERT, AlertDescription, TriggeredAt, ResolvedAt, IsResolved, id_analysis)
+        VALUES (seq_alert.NEXTVAL, p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis);
+
+        DBMS_OUTPUT.PUT_LINE('Alert inserido com sucesso.');
+        COMMIT;
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Erro na validação dos dados de entrada para inserção do Alerta.');
+    END IF;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Já existe um Alerta com este identificador.');
+        ROLLBACK;
+
+    WHEN VALUE_ERROR THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Tipo de dado incorreto fornecido.');
+        ROLLBACK;
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro ao inserir Alerta: ' || SQLERRM);
+        ROLLBACK;
+END Insert_Alert;
+/
+
+EXECUTE Insert_Alert('Sobreaquecimento no Reator', TIMESTAMP '2024-11-11 12:52:07', TIMESTAMP '2024-11-11 13:01:21', '1', 1);
+/

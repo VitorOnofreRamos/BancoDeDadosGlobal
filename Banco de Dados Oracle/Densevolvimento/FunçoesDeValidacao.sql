@@ -3,6 +3,10 @@ set SERVEROUTPUT on;
 Create or replace FUNCTION Is_Null_Or_Empty(value IN VARCHAR2) RETURN BOOLEAN IS
 BEGIN
     RETURN (value IS NULL OR TRIM(value) = '' OR NOT REGEXP_LIKE(value, '^[A-Za-z0-9À-ÖØ-öø-ÿ][A-Za-z0-9À-ÖØ-öø-ÿ ]*$'));
+EXCEPTION 
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+        RETURN FALSE;
 END Is_Null_Or_Empty;
 /
 
@@ -317,19 +321,27 @@ CREATE OR REPLACE FUNCTION Valida_Insert_Alert(
     invalid_resolution EXCEPTION;
     invalid_isresolved EXCEPTION;
     invalid_id_analysis EXCEPTION;
-    v_conut NUMBER;
+    v_count NUMBER;
 BEGIN
     -- Verificar se a Analysis exsiste
     SELECT COUNT(*) INTO v_count
     FROM analysis
-    WHERE id_analysis = id_analysis;
-    IF v_count = 0 OR id_analysis IS NULL THEN
+    WHERE id_analysis = p_id_analysis;
+    IF v_count = 0 OR p_id_analysis IS NULL THEN
         RAISE invalid_id_analysis;
     END IF;
 
     -- Verifica se a descrição do alerta está vazia ou não segue o padrão
     IF Is_Null_Or_Empty(p_AlertDescription) THEN
         RAISE invalid_description;
+    END IF;
+    
+    IF p_TriggeredAt > CURRENT_TIMESTAMP THEN
+        RAISE invalid_trigger;
+    END IF;
+    
+    IF p_ResolvedAt < p_TriggeredAt OR p_ResolvedAt > CURRENT_TIMESTAMP THEN
+        RAISE invalid_resolution;
     END IF;
 
     -- Verifica se IsResolved tem valor '0'(Não) ou '1'(Sim)
@@ -344,9 +356,21 @@ EXCEPTION
     WHEN invalid_description THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Descrição do alerta inválida.');
         RETURN FALSE;
+    
+    WHEN invalid_trigger THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: A data/hora não pode ser no futuro.');
+        RETURN FALSE;
+        
+    WHEN invalid_resolution THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: A data/hora de resolução não pode ser menor que a data/hora de trigger e não pode ser no futuro.');
+        RETURN FALSE;
 
     WHEN invalid_isresolved THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Status de resolução deve ser "Y" ou "N".');
+        RETURN FALSE;
+        
+    WHEN invalid_id_analysis THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Analise não consta no Banco de Dados');
         RETURN FALSE;
 
     WHEN OTHERS THEN
@@ -356,7 +380,7 @@ END Valida_Insert_Alert;
 /
 
 BEGIN
-    IF Valida_Insert_Alert(, TIMESTAMP '2024-11-11 12:30:00', 2) THEN
+    IF Valida_Insert_Alert('Sobreaquecimento', TIMESTAMP '2024-11-11 12:30:00', TIMESTAMP '2024-11-11 11:30:00', '1', 1) THEN
         DBMS_OUTPUT.PUT_LINE('A');
     END IF;
 END;
