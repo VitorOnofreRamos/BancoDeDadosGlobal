@@ -1,22 +1,46 @@
 set SERVEROUTPUT on;
 
+Create or replace FUNCTION Is_Null_Or_Empty(value IN VARCHAR2) RETURN BOOLEAN IS
+BEGIN
+    RETURN (value IS NULL OR TRIM(value) = '' OR NOT REGEXP_LIKE(value, '^[\p{L}\d][\p{L}\d\s]*$'));
+END Is_Null_Or_Empty;
+/
+
+CREATE OR REPLACE FUNCTION Is_Valid_Timestamp(p_timestamp IN TIMESTAMP) RETURN BOOLEAN IS
+BEGIN
+    IF p_timestamp > CURRENT_TIMESTAMP THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: A data/hora não pode ser no futuro.');
+        RETURN FALSE;
+    ELSE
+        RETURN TRUE;
+    END IF;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+        RETURN FALSE;
+END Is_Valid_Timestamp;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 create or replace FUNCTION Valida_Insert_NuclearPlant(
-    p_plantName         VARCHAR2,
-    p_fullCapacity      VARCHAR2,
-    p_numberOfReactors  VARCHAR2
+    p_plantName         NuclearPlant.plantName%TYPE,
+    p_fullCapacity      NuclearPlant.fullCapacity%TYPE,
+    p_numberOfReactors  NuclearPlant.numberOfReactors%TYPE
 ) RETURN BOOLEAN IS
     invalid_name EXCEPTION;
     invalid_capacity EXCEPTION;
     invalid_reactors EXCEPTION;
 BEGIN
     -- Verificar se o nome está vazio ou nulo, ou não corresponde ao padrão
-    IF Is_Null_Or_Empty(p_plantName) OR NOT REGEXP_LIKE(p_plantName, '^[A-Za-z0-9][A-Za-z0-9 ]*$') THEN
+    IF Is_Null_Or_Empty(p_plantName) THEN
         RAISE invalid_name;
     END IF;
 
     -- Validar se fullCapacity é um número positivo válido
     BEGIN
-        IF p_fullCapacity IS NULL OR TO_NUMBER(p_fullCapacity) < 1 THEN
+        IF p_fullCapacity IS NULL OR p_fullCapacity < 1 THEN
             RAISE invalid_capacity;
         END IF;
     EXCEPTION
@@ -27,7 +51,7 @@ BEGIN
 
     -- Validar se numberOfReactors é um número positivo válido
     BEGIN
-        IF p_numberOfReactors IS NULL OR TO_NUMBER(p_numberOfReactors) < 1 THEN
+        IF p_numberOfReactors IS NULL OR p_numberOfReactors < 1 THEN
             RAISE invalid_reactors;
         END IF;
     EXCEPTION
@@ -36,7 +60,7 @@ BEGIN
             RETURN FALSE;
     END;
 
-    DBMS_OUTPUT.PUT_LINE('Histórico de consulta válido para inserção.');
+    DBMS_OUTPUT.PUT_LINE('Usina válida para a inserção.');
     RETURN TRUE;
 
 EXCEPTION
@@ -58,19 +82,43 @@ EXCEPTION
 END Valida_Insert_NuclearPlant;
 /
 
+BEGIN
+    IF Valida_Insert_NuclearPlant('Nome da Usina', 123, 123) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
+/
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION Valida_Insert_Metric(
+    p_MetricDate                 Metric.MetricDate%TYPE,
     p_ElectricityProvided        Metric.ElectricityProvided%TYPE,
     p_NuclearParticipation       Metric.NuclearParticipation%TYPE,
     p_OperationalEfficiency      Metric.OperationalEfficiency%TYPE,
     p_id_nuclearplant            Metric.id_nuclearplant%TYPE
 ) RETURN BOOLEAN IS
+    invalid_timestamp EXCEPTION;
     invalid_electricity EXCEPTION;
     invalid_nuclear_participation EXCEPTION;
     invalid_operational_efficiency EXCEPTION;
+    invalid_id_nuclearplant EXCEPTION;
+    v_count NUMBER;
 BEGIN
+    -- Verificar se a Usina exsiste
+    SELECT COUNT(*) INTO v_count
+    FROM nuclearplant
+    WHERE id_nuclearplant = p_id_nuclearplant;
+    IF v_count = 0 OR p_id_nuclearplant IS NULL THEN
+        RAISE invalid_id_nuclearplant;
+    END IF;
+
+    -- Verifica se MetricDate não é no futuro
+    IF p_MetricDate IS NULL OR p_MetricDate > CURRENT_TIMESTAMP THEN
+        RAISE invalid_timestamp;
+    END IF;
+
     -- Verifica se ElectricityProvided é um número positivo
     IF p_ElectricityProvided IS NULL OR p_ElectricityProvided < 0 THEN
         RAISE invalid_electricity;
@@ -90,6 +138,10 @@ BEGIN
     RETURN TRUE;
 
 EXCEPTION
+    WHEN invalid_timestamp THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: A data/hora não pode ser no futuro.');
+        RETURN FALSE;
+
     WHEN invalid_electricity THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Valor de eletricidade fornecida inválido.');
         RETURN FALSE;
@@ -101,11 +153,22 @@ EXCEPTION
     WHEN invalid_operational_efficiency THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Eficiência operacional deve estar entre 0 e 100.');
         RETURN FALSE;
+        
+    WHEN invalid_id_nuclearplant THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Usina não consta no Banco de Dados');
+        RETURN FALSE;
 
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
         RETURN FALSE;
 END Valida_Insert_Metric;
+/
+
+BEGIN
+    IF Valida_Insert_Metric(TIMESTAMP '2024-11-11 12:30:00', 1234, 100, 0, 1) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
 /
 
 --------------------------------------------------------------------------------
@@ -120,14 +183,24 @@ CREATE OR REPLACE FUNCTION Valida_Insert_Sensor(
     invalid_sensor_name EXCEPTION;
     invalid_location EXCEPTION;
     invalid_status EXCEPTION;
+    invalid_id_nuclearplant EXCEPTION;
+    v_count NUMBER;
 BEGIN
+    -- Verificar se a Usina exsiste
+    SELECT COUNT(*) INTO v_count
+    FROM nuclearplant
+    WHERE id_nuclearplant = p_id_nuclearplant;
+    IF v_count = 0 OR p_id_nuclearplant IS NULL THEN
+        RAISE invalid_id_nuclearplant;
+    END IF;
+
     -- Valida o nome do sensor (somente letras, números e espaços)
-    IF Is_Null_Or_Empty(p_SensorName) OR NOT REGEXP_LIKE(p_SensorName, '^[A-Za-z0-9 ]+$') THEN
+    IF Is_Null_Or_Empty(p_SensorName) THEN
         RAISE invalid_sensor_name;
     END IF;
 
     -- Valida a localização da maquinaria
-    IF Is_Null_Or_Empty(p_MachinaryLocation) OR NOT REGEXP_LIKE(p_MachinaryLocation, '^[A-Za-z0-9 ]+$') THEN
+    IF Is_Null_Or_Empty(p_MachinaryLocation) THEN
         RAISE invalid_location;
     END IF;
 
@@ -145,17 +218,28 @@ EXCEPTION
         RETURN FALSE;
 
     WHEN invalid_location THEN
-        DBMS_OUTPUT.PUT_LINE('Erro: Localização da maquinaria inválida.');
+        DBMS_OUTPUT.PUT_LINE('Erro: Localização do maquinaria inválida.');
         RETURN FALSE;
 
     WHEN invalid_status THEN
         DBMS_OUTPUT.PUT_LINE('Erro: Status do sensor deve ser "0" (inativo) ou "1" (ativo).');
+        RETURN FALSE;
+        
+    WHEN invalid_id_nuclearplant THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Usina não consta no Banco de Dados');
         RETURN FALSE;
 
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
         RETURN FALSE;
 END Valida_Insert_Sensor;
+/
+
+BEGIN
+    IF Valida_Insert_Sensor('Nome do Sensor', 'Localizacao do Sensor', '0', 1) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
 /
 
 --------------------------------------------------------------------------------
