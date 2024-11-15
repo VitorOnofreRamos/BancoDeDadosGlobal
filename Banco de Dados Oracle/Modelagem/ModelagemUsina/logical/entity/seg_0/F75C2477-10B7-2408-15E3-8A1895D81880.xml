@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F75C2477-10B7-2408-15E3-8A1895D81880" name="Alert">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F75C2477-10B7-2408-15E3-8A1895D81880" name="LogAlert">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:40:32 UTC</createdTime>
 <ownerDesignName>ModelagemUsina</ownerDesignName>

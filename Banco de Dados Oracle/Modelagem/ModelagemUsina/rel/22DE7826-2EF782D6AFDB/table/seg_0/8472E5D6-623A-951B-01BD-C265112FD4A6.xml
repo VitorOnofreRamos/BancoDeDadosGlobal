@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8472E5D6-623A-951B-01BD-C265112FD4A6" name="SensorType">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>F22B21A1-2339-931F-1BCC-A961F982AC8A</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_SensorType" id="40AA1606-75CB-440C-EFFE-5E4286842EC6">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>5DB596E0-8418-50C7-B518-EBD2C48AAB53</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SpecificType" id="0A0C145C-8446-014F-D69D-8D3FA673A346">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>D134F3CD-DBBB-44B2-2DF0-EE43D896A21A</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Sensor_ID_Sensor" id="6D73D305-7C2E-6D40-BF97-FFAAC63B57B3">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>95DE4004-D5C8-3139-20B6-F51B914FD566</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F620EA0A-69A6-E2DD-2FE3-DA7CA2260828" referredColumn="38AB4D32-866F-D957-6BAA-9E77145C2BC9"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6B52D3F2-C2D4-6327-CD08-A27CC8EDC8DD" name="SensorType_PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>199A13E0-69D3-7781-A8D5-98CC2589FE0D</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="40AA1606-75CB-440C-EFFE-5E4286842EC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FCDBE4A7-E114-5840-5A93-1CE9F0491180" name="SensorType__IDX">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>4BE3E3A8-4FF6-C1CE-3F40-6E8503112296</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6D73D305-7C2E-6D40-BF97-FFAAC63B57B3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F5DDB7EC-CE1E-122B-B708-2680C3FDDA5D" name="SensorType_Sensor_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>4BE3E3A8-4FF6-C1CE-3F40-6E8503112296</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6D73D305-7C2E-6D40-BF97-FFAAC63B57B3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

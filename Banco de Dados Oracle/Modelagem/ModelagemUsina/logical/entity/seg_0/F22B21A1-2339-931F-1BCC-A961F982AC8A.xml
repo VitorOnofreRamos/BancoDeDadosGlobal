@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F22B21A1-2339-931F-1BCC-A961F982AC8A" name="SensorType">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:11:06 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_SensorType" id="5DB596E0-8418-50C7-B518-EBD2C48AAB53">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:11:14 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SpecificType" id="D134F3CD-DBBB-44B2-2DF0-EE43D896A21A">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:11:34 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_Sensor" id="95DE4004-D5C8-3139-20B6-F51B914FD566">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:19 UTC</createdTime>
+<generatorID>4BE3E3A8-4FF6-C1CE-3F40-6E8503112296</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="true"/>
+</engineerTo>
+<referedAttribute>6B50A4F0-AFB2-6D4F-1621-60B8280AD19E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="199A13E0-69D3-7781-A8D5-98CC2589FE0D" name="SensorType PK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:11:32 UTC</createdTime>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="22DE7826-C473-3548-2127-2EF782D6AFDB" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5DB596E0-8418-50C7-B518-EBD2C48AAB53</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F620EA0A-69A6-E2DD-2FE3-DA7CA2260828" containerWithKeyObject="8472E5D6-623A-951B-01BD-C265112FD4A6" localFKIndex="F5DDB7EC-CE1E-122B-B708-2680C3FDDA5D" name="SensorType_Sensor_FK">
+<createdBy>labsfiap</createdBy>
+<createdTime>2024-11-14 22:12:38 UTC</createdTime>
+<generatorID>4BE3E3A8-4FF6-C1CE-3F40-6E8503112296</generatorID>
+<ownerDesignName>ModelagemUsina</ownerDesignName>
+<referredTableLongName>Sensor</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C6AC9FFA-FE90-9DEC-A00A-5AD43D03C483</referredTableID>
+<keyObject>2F54A863-29C3-0EC0-1F60-B16B5DD60522</keyObject>
+<referredKeyID>2F54A863-29C3-0EC0-1F60-B16B5DD60522</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_Sensor</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

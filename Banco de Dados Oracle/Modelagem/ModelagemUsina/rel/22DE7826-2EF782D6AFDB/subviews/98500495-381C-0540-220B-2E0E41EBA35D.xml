@@ -8,7 +8,7 @@
 <showLegend>false</showLegend>
 <showLabels>false</showLabels>
 <showRelAttributes>false</showRelAttributes>
-<gridEnabled>false</gridEnabled>
+<gridEnabled>true</gridEnabled>
 <showGrid>false</showGrid>
 <diagramColor>-1</diagramColor>
 <display>false</display>
@@ -16,23 +16,27 @@
 <objectViews>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="04D1418F-3EC3-3AA0-8A55-85C397993320" otype="Table" vid="1D88774B-2E7A-A3D7-A97C-6C3AF4AF34A5">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="30" y="290" width="303" height="163"/>
+<bounds x="0" y="230" width="301" height="172"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="3720CD23-6951-B9A6-EC13-37A1ACBB4462" otype="Table" vid="63D104C9-6332-973D-B195-A55AC77B498A">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="694" y="45" width="233" height="133"/>
+<bounds x="720" y="0" width="301" height="171"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="8472E5D6-623A-951B-01BD-C265112FD4A6" otype="Table" vid="4CC9F91C-16A6-8D3F-EBBE-02C5BED85756">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="360" y="230" width="301" height="171"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="95668BF8-95BA-F891-D9F8-76D103178DF1" otype="Table" vid="ABE305A2-A7A5-E8DF-7C25-14274D9BF1FC">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="669" y="280" width="232" height="168"/>
+<bounds x="720" y="230" width="301" height="171"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="C6AC9FFA-FE90-9DEC-A00A-5AD43D03C483" otype="Table" vid="54FEF0EA-2CF8-3CFE-CE3A-6F58FFA56EEF">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="318" y="45" width="301" height="150"/>
+<bounds x="360" y="0" width="302" height="171"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="F929247F-D1B8-6F1F-D971-7A254EAE8109" otype="Table" vid="C40936D9-1E5D-9E1E-A036-9DF8F29739FA">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="40" y="45" width="222" height="141"/>
+<bounds x="0" y="0" width="301" height="171"/>
 </OView>
 </objectViews>
 <connectors>
@@ -41,8 +45,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="619" y="111"/>
-<point x="694" y="111"/>
+<point x="662" y="85"/>
+<point x="720" y="85"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="6CBEBFF9-E9B8-0909-FAD8-E1F49A559381" otype="FKIndexAssociation" vid_source="63D104C9-6332-973D-B195-A55AC77B498A" vid_target="ABE305A2-A7A5-E8DF-7C25-14274D9BF1FC">
@@ -50,8 +54,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="797" y="178"/>
-<point x="797" y="280"/>
+<point x="870" y="171"/>
+<point x="870" y="230"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="7A09A23D-DC5D-0F2E-5239-C7BFB96177C5" otype="FKIndexAssociation" vid_source="C40936D9-1E5D-9E1E-A036-9DF8F29739FA" vid_target="1D88774B-2E7A-A3D7-A97C-6C3AF4AF34A5">
@@ -59,8 +63,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="136" y="186"/>
-<point x="136" y="290"/>
+<point x="150" y="171"/>
+<point x="150" y="230"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="90321C44-9439-ED80-C76B-86B328B2DE24" otype="FKIndexAssociation" vid_source="C40936D9-1E5D-9E1E-A036-9DF8F29739FA" vid_target="54FEF0EA-2CF8-3CFE-CE3A-6F58FFA56EEF">
@@ -68,8 +72,17 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="262" y="100"/>
-<point x="318" y="100"/>
+<point x="301" y="85"/>
+<point x="360" y="85"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="F620EA0A-69A6-E2DD-2FE3-DA7CA2260828" otype="FKIndexAssociation" vid_source="54FEF0EA-2CF8-3CFE-CE3A-6F58FFA56EEF" vid_target="4CC9F91C-16A6-8D3F-EBBE-02C5BED85756">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="510" y="171"/>
+<point x="510" y="280"/>
 </points>
 </Connector>
 </connectors>

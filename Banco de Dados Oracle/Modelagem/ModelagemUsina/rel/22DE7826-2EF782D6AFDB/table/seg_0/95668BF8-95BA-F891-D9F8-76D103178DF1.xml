@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="95668BF8-95BA-F891-D9F8-76D103178DF1" name="Alert">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="95668BF8-95BA-F891-D9F8-76D103178DF1" name="LogAlert">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>F75C2477-10B7-2408-15E3-8A1895D81880</generatorID>
@@ -95,7 +95,7 @@
 <colUsage columnID="8F265AE7-6303-2DD1-F57C-EA2B87A35FAB"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="58ED27C5-B98B-0ABA-C52B-1E6A4CD2C179" name="Alert_Analysis_FK">
+<ind_PK_UK id="58ED27C5-B98B-0ABA-C52B-1E6A4CD2C179" name="LogAlert_Analysis_FK">
 <createdBy>labsfiap</createdBy>
 <createdTime>2024-11-13 16:49:42 UTC</createdTime>
 <generatorID>F3276BA1-2B62-98D1-4A3A-87BEF430874C</generatorID>
