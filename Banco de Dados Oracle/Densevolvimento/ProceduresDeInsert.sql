@@ -47,8 +47,8 @@ Create or replace PROCEDURE Insert_Metric(
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Metric(p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant) THEN
-        INSERT INTO Metric (ID_METRIC, MetricDate, ElectricityProvided, NuclearParticipation, OperationalEfficiency, id_nuclearplant)
-        VALUES (seq_metric.NEXTVAL, p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant);
+        INSERT INTO Metric (MetricDate, ElectricityProvided, NuclearParticipation, OperationalEfficiency, id_nuclearplant)
+        VALUES (p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant);
 
         DBMS_OUTPUT.PUT_LINE('Métrica inserida com sucesso.');
         COMMIT;
@@ -85,8 +85,8 @@ Create or replace PROCEDURE Insert_Sensor(
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Sensor(p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant) THEN
-        INSERT INTO Sensor (ID_SENSOR, SensorName, MachinaryLocation, Status, id_nuclearplant)
-        VALUES (seq_sensor.NEXTVAL, p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant);
+        INSERT INTO Sensor (SensorName, MachinaryLocation, Status, id_nuclearplant)
+        VALUES (p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant);
 
         DBMS_OUTPUT.PUT_LINE('Sensor inserido com sucesso.');
         COMMIT;
@@ -95,7 +95,7 @@ BEGIN
     END IF;
 EXCEPTION
     WHEN DUP_VAL_ON_INDEX THEN
-        DBMS_OUTPUT.PUT_LINE('Erro: Já existe um senso com este identificador.');
+        DBMS_OUTPUT.PUT_LINE('Erro: Já existe um sensor com este identificador.');
         ROLLBACK;
 
     WHEN VALUE_ERROR THEN
@@ -114,6 +114,42 @@ END Insert_Sensor;
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+Create or replace PROCEDURE Insert_SensorType(
+    p_SpecificType           SensorType.SpecificType%TYPE,
+    p_id_sensor              SensorType.id_sensor%TYPE
+) IS
+BEGIN
+    -- Validar dados da inserção
+    IF Valida_Insert_SensorType(p_SpecificType, p_id_sensor) THEN
+        INSERT INTO SensorType (SpecificType, id_sensor)
+        VALUES (p_SpecificType, p_id_sensor);
+
+        DBMS_OUTPUT.PUT_LINE('Tipo de sensor inserido com sucesso.');
+        COMMIT;
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Erro na validação dos dados de entrada para inserção do Tipo de sensor.');
+    END IF;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Já existe um tipo de sensor com este identificador.');
+        ROLLBACK;
+
+    WHEN VALUE_ERROR THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Tipo de dado incorreto fornecido.');
+        ROLLBACK;
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro ao inserir Tipo de sensor: ' || SQLERRM);
+        ROLLBACK;
+END Insert_SensorType;
+/
+
+    EXECUTE Insert_SensorType('Radiologico', 1);
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 Create or replace PROCEDURE Insert_Analysis(
     p_AnalysisValue          Analysis.AnalysisValue%TYPE,
     p_AnalysisTimestamp      Analysis.AnalysisTimestamp%TYPE,
@@ -122,8 +158,8 @@ Create or replace PROCEDURE Insert_Analysis(
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Analysis(p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor) THEN
-        INSERT INTO Analysis (ID_ANALYSIS, AnalysisValue, AnalysisTimestamp, id_sensor)
-        VALUES (seq_analysis.NEXTVAL, p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor);
+        INSERT INTO Analysis (AnalysisValue, AnalysisTimestamp, id_sensor)
+        VALUES (p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor);
 
         DBMS_OUTPUT.PUT_LINE('Analise inserida com sucesso.');
         COMMIT;
@@ -151,18 +187,18 @@ EXECUTE Insert_Analysis(300, TIMESTAMP '2024-11-11 12:52:07', 1);
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-Create or replace PROCEDURE Insert_Alert(
-    p_AlertDescription             Alert.AlertDescription%TYPE,
-    p_TriggeredAt                  Alert.TriggeredAt%TYPE,
-    p_ResolvedAt                   Alert.ResolvedAT%TYPE,
-    p_IsResolved                   Alert.IsResolved%TYPE,
-    p_id_analysis                  Alert.id_analysis%TYPE
+Create or replace PROCEDURE Insert_LogAlert(
+    p_AlertDescription             LogAlert.AlertDescription%TYPE,
+    p_TriggeredAt                  LogAlert.TriggeredAt%TYPE,
+    p_ResolvedAt                   LogAlert.ResolvedAT%TYPE,
+    p_IsResolved                   LogAlert.IsResolved%TYPE,
+    p_id_analysis                  LogAlert.id_analysis%TYPE
 ) IS
 BEGIN
     -- Validar dados da inserção
-    IF Valida_Insert_Alert (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis) THEN
-        INSERT INTO Alert (ID_ALERT, AlertDescription, TriggeredAt, ResolvedAt, IsResolved, id_analysis)
-        VALUES (seq_alert.NEXTVAL, p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis);
+    IF Valida_Insert_LogAlert (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis) THEN
+        INSERT INTO LogAlert (AlertDescription, TriggeredAt, ResolvedAt, IsResolved, id_analysis)
+        VALUES (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis);
 
         DBMS_OUTPUT.PUT_LINE('Alert inserido com sucesso.');
         COMMIT;
@@ -181,14 +217,15 @@ EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Erro ao inserir Alerta: ' || SQLERRM);
         ROLLBACK;
-END Insert_Alert;
+END Insert_LogAlert;
 /
 
-EXECUTE Insert_Alert('Sobreaquecimento no Reator', TIMESTAMP '2024-11-11 12:52:07', TIMESTAMP '2024-11-11 13:01:21', '1', 1);
+EXECUTE Insert_LogAlert('Sobreaquecimento no Reator', TIMESTAMP '2024-11-11 12:52:07', TIMESTAMP '2024-11-11 13:01:21', '1', 1);
 /
 
 SELECT * FROM NUCLEARPLANT;
 SELECT * FROM METRIC;
 SELECT * FROM SENSOR;
+SELECT * FROM SENSORTYPE;
 SELECT * FROM ANALYSIS;
-SELECT * FROM ALERT;
+SELECT * FROM LOGALERT;

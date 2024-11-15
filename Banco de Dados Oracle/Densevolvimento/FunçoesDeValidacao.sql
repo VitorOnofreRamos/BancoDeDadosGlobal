@@ -249,6 +249,55 @@ END;
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION Valida_Insert_SensorType(
+    p_SpecificType           SensorType.SpecificType%TYPE,
+    p_id_sensor              SensorType.id_sensor%TYPE
+) RETURN BOOLEAN IS
+    invalid_sensor_type EXCEPTION;
+    invalid_id_sensor EXCEPTION;
+    v_count NUMBER;
+BEGIN
+    -- Verificar se a Usina exsiste
+    SELECT COUNT(*) INTO v_count
+    FROM sensor
+    WHERE id_sensor = p_id_sensor;
+    IF v_count = 0 OR p_id_sensor IS NULL THEN
+        RAISE invalid_id_sensor;
+    END IF;
+
+    -- Valida o nome do sensor (somente letras, números e espaços)
+    IF Is_Null_Or_Empty(p_SpecificType) THEN
+        RAISE invalid_sensor_type;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Dados do tipo de sensor válidos para inserção.');
+    RETURN TRUE;
+
+EXCEPTION
+    WHEN invalid_sensor_type THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Tipo de sensor inválido.');
+        RETURN FALSE;
+        
+    WHEN invalid_id_sensor THEN
+        DBMS_OUTPUT.PUT_LINE('Erro: Sensor não consta no Banco de Dados');
+        RETURN FALSE;
+
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+        RETURN FALSE;
+END Valida_Insert_SensorType;
+/
+
+BEGIN
+    IF Valida_Insert_SensorType('Nome do Tipo de sensor', 1) THEN
+        DBMS_OUTPUT.PUT_LINE('A');
+    END IF;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION Valida_Insert_Analysis(
     p_AnalysisValue           Analysis.AnalysisValue%TYPE,
     p_AnalysisTimestamp       Analysis.AnalysisTimestamp%TYPE,
@@ -309,12 +358,12 @@ END;
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION Valida_Insert_Alert(
-    p_AlertDescription         Alert.AlertDescription%TYPE,
-    p_TriggeredAt              Alert.TriggeredAt%TYPE,
-    p_ResolvedAt               Alert.ResolvedAt%TYPE,
-    p_IsResolved               Alert.IsResolved%TYPE,
-    p_id_analysis              Alert.id_analysis%TYPE
+CREATE OR REPLACE FUNCTION Valida_Insert_LogAlert(
+    p_AlertDescription         LogAlert.AlertDescription%TYPE,
+    p_TriggeredAt              LogAlert.TriggeredAt%TYPE,
+    p_ResolvedAt               LogAlert.ResolvedAt%TYPE,
+    p_IsResolved               LogAlert.IsResolved%TYPE,
+    p_id_analysis              LogAlert.id_analysis%TYPE
 ) RETURN BOOLEAN IS
     invalid_description EXCEPTION;
     invalid_trigger EXCEPTION;
@@ -376,11 +425,11 @@ EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
         RETURN FALSE;
-END Valida_Insert_Alert;
+END Valida_Insert_LogAlert;
 /
 
 BEGIN
-    IF Valida_Insert_Alert('Sobreaquecimento', TIMESTAMP '2024-11-11 12:30:00', TIMESTAMP '2024-11-11 11:30:00', '1', 1) THEN
+    IF Valida_Insert_LogAlert('Sobreaquecimento', TIMESTAMP '2024-11-11 12:30:00', TIMESTAMP '2024-11-11 11:30:00', '1', 1) THEN
         DBMS_OUTPUT.PUT_LINE('A');
     END IF;
 END;

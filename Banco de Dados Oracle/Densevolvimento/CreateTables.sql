@@ -47,7 +47,7 @@ CREATE TABLE Analysis (
 );
 
 CREATE TABLE LogAlert (
-    ID_Alert                    NUMBER generated always as identity PRIMARY KEY,
+    ID_LogAlert                 NUMBER generated always as identity PRIMARY KEY,
     AlertDescription            VARCHAR2(100) NOT NULL,
     TriggeredAt                 TIMESTAMP DEFAULT SYSDATE NOT NULL,
     ResolvedAt                  TIMESTAMP,
