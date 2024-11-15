@@ -3,7 +3,7 @@ DROP TABLE metric       cascade constraints;
 DROP TABLE sensor       cascade constraints;
 DROP TABLE sensortype   cascade CONSTRAINTS;
 DROP TABLE analysis     cascade constraints;
-DROP TABLE alert        cascade constraints;
+DROP TABLE logalert        cascade constraints;
 
 CREATE TABLE NuclearPlant (
     ID_NuclearPlant             NUMBER generated always as identity PRIMARY KEY,
@@ -31,7 +31,7 @@ CREATE TABLE Sensor (
     FOREIGN KEY (id_nuclearplant) REFERENCES NuclearPlant (ID_NuclearPlant)
 );
 
-CREATE TABLE sensortype (
+CREATE TABLE SensorType (
     id_sensortype               NUMBER generated always as identity PRIMARY KEY,
     specifictype                VARCHAR2(50) NOT NULL,
     id_sensor                   NUMBER NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE Analysis (
     FOREIGN KEY (id_sensor) REFERENCES Sensor(ID_Sensor)
 );
 
-CREATE TABLE Alert (
+CREATE TABLE LogAlert (
     ID_Alert                    NUMBER generated always as identity PRIMARY KEY,
     AlertDescription            VARCHAR2(100) NOT NULL,
     TriggeredAt                 TIMESTAMP DEFAULT SYSDATE NOT NULL,
