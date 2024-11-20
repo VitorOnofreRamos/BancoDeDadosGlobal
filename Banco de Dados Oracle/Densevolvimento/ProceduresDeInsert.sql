@@ -1,15 +1,17 @@
 set SERVEROUTPUT on;
 
 Create or replace PROCEDURE Insert_NuclearPlant(
-    p_plantName         NuclearPlant.plantName%TYPE,
-    p_fullCapacity      NuclearPlant.fullCapacity%TYPE,
-    p_numberOfReactors  NuclearPlant.numberOfReactors%TYPE
-) IS
+    p_plantName         IN  NuclearPlant.plantName%TYPE,
+    p_fullCapacity      IN  NuclearPlant.fullCapacity%TYPE,
+    p_numberOfReactors  IN  NuclearPlant.numberOfReactors%TYPE,
+    p_id                OUT NuclearPlant.id_nuclearplant%TYPE
+) AS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_NuclearPlant(p_plantName, p_fullCapacity, p_numberOfReactors) THEN
         INSERT INTO NuclearPlant (PlantName, FullCapacity, NumberOfReactors)
-        VALUES (p_plantName, p_fullCapacity, p_numberOfReactors);
+        VALUES (p_plantName, p_fullCapacity, p_numberOfReactors)
+        RETURNING ID_NuclearPlant INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Usina inserida com sucesso.');
         COMMIT;
@@ -31,24 +33,23 @@ EXCEPTION
 END insert_nuclearplant;
 /
 
-EXECUTE insert_nuclearplant('Usina Power On' , 300, 2);
-/
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 Create or replace PROCEDURE Insert_Metric(
-    p_MetricDate                 Metric.MetricDate%TYPE,
-    p_ElectricityProvided        Metric.ElectricityProvided%TYPE,
-    p_NuclearParticipation       Metric.NuclearParticipation%TYPE,
-    p_OperationalEfficiency      Metric.OperationalEfficiency%TYPE,
-    p_id_nuclearplant            Metric.id_nuclearplant%TYPE
-) IS
+    p_MetricDate                IN  Metric.MetricDate%TYPE,
+    p_ElectricityProvided       IN  Metric.ElectricityProvided%TYPE,
+    p_NuclearParticipation      IN  Metric.NuclearParticipation%TYPE,
+    p_OperationalEfficiency     IN  Metric.OperationalEfficiency%TYPE,
+    p_id_nuclearplant           IN  Metric.id_nuclearplant%TYPE,
+    p_id                        OUT Metric.id_metric%TYPE
+) AS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Metric(p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant) THEN
         INSERT INTO Metric (MetricDate, ElectricityProvided, NuclearParticipation, OperationalEfficiency, id_nuclearplant)
-        VALUES (p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant);
+        VALUES (p_MetricDate, p_ElectricityProvided, p_NuclearParticipation, p_OperationalEfficiency, p_id_nuclearplant)
+        RETURNING ID_Metric INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Métrica inserida com sucesso.');
         COMMIT;
@@ -70,23 +71,22 @@ EXCEPTION
 END Insert_Metric;
 /
 
-EXECUTE insert_Metric(TIMESTAMP '2024-11-10 07:20:00', 700, 50, 80, 1);
-/
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 Create or replace PROCEDURE Insert_Sensor(
-    p_SensorName             Sensor.SensorName%TYPE,
-    p_MachinaryLocation      Sensor.MachinaryLocation%TYPE,
-    p_Status                 Sensor.Status%TYPE,
-    p_id_nuclearplant        Sensor.id_nuclearplant%TYPE
-) IS
+    p_SensorName             IN Sensor.SensorName%TYPE,
+    p_MachinaryLocation      IN Sensor.MachinaryLocation%TYPE,
+    p_Status                 IN Sensor.Status%TYPE,
+    p_id_nuclearplant        IN Sensor.id_nuclearplant%TYPE,
+    p_id                     OUT Sensor.id_sensor%TYPE
+) AS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Sensor(p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant) THEN
         INSERT INTO Sensor (SensorName, MachinaryLocation, Status, id_nuclearplant)
-        VALUES (p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant);
+        VALUES (p_SensorName, p_MachinaryLocation, p_Status, p_id_nuclearplant)
+        RETURNING ID_Sensor INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Sensor inserido com sucesso.');
         COMMIT;
@@ -108,21 +108,20 @@ EXCEPTION
 END Insert_Sensor;
 /
 
-    EXECUTE Insert_Sensor('Sensor de Temperatura do Reator', 'No maquinário do reator', '1', 1);
-/
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 Create or replace PROCEDURE Insert_SensorType(
-    p_SpecificType           SensorType.SpecificType%TYPE,
-    p_id_sensor              SensorType.id_sensor%TYPE
-) IS
+    p_SpecificType           IN SensorType.SpecificType%TYPE,
+    p_id_sensor              IN SensorType.id_sensor%TYPE,
+    p_id                     OUT SensorType.id_sensortype%TYPE
+) AS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_SensorType(p_SpecificType, p_id_sensor) THEN
         INSERT INTO SensorType (SpecificType, id_sensor)
-        VALUES (p_SpecificType, p_id_sensor);
+        VALUES (p_SpecificType, p_id_sensor)
+        RETURNING ID_SensorType INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Tipo de sensor inserido com sucesso.');
         COMMIT;
@@ -144,22 +143,21 @@ EXCEPTION
 END Insert_SensorType;
 /
 
-    EXECUTE Insert_SensorType('Radiologico', 1);
-/
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 Create or replace PROCEDURE Insert_Analysis(
-    p_AnalysisValue          Analysis.AnalysisValue%TYPE,
-    p_AnalysisTimestamp      Analysis.AnalysisTimestamp%TYPE,
-    p_id_sensor              Analysis.id_sensor%TYPE
-) IS
+    p_AnalysisValue         IN Analysis.AnalysisValue%TYPE,
+    p_AnalysisTimestamp     IN Analysis.AnalysisTimestamp%TYPE,
+    p_id_sensor             IN Analysis.id_sensor%TYPE,
+    p_id                    OUT Analysis.id_analysis%TYPE
+) AS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_Analysis(p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor) THEN
         INSERT INTO Analysis (AnalysisValue, AnalysisTimestamp, id_sensor)
-        VALUES (p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor);
+        VALUES (p_AnalysisValue, p_AnalysisTimestamp, p_id_sensor)
+        RETURNING ID_Analysis INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Analise inserida com sucesso.');
         COMMIT;
@@ -181,24 +179,23 @@ EXCEPTION
 END Insert_Analysis;
 /
 
-EXECUTE Insert_Analysis(300, TIMESTAMP '2024-11-11 12:52:07', 1);
-/
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 Create or replace PROCEDURE Insert_LogAlert(
-    p_AlertDescription             LogAlert.AlertDescription%TYPE,
-    p_TriggeredAt                  LogAlert.TriggeredAt%TYPE,
-    p_ResolvedAt                   LogAlert.ResolvedAT%TYPE,
-    p_IsResolved                   LogAlert.IsResolved%TYPE,
-    p_id_analysis                  LogAlert.id_analysis%TYPE
+    p_AlertDescription            IN LogAlert.AlertDescription%TYPE,
+    p_TriggeredAt                 IN LogAlert.TriggeredAt%TYPE,
+    p_ResolvedAt                  IN LogAlert.ResolvedAT%TYPE,
+    p_IsResolved                  IN LogAlert.IsResolved%TYPE,
+    p_id_analysis                 IN LogAlert.id_analysis%TYPE,
+    p_id                          OUT LogAlert.id_alert%TYPE
 ) IS
 BEGIN
     -- Validar dados da inserção
     IF Valida_Insert_LogAlert (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis) THEN
         INSERT INTO LogAlert (AlertDescription, TriggeredAt, ResolvedAt, IsResolved, id_analysis)
-        VALUES (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis);
+        VALUES (p_AlertDescription, p_TriggeredAt, p_ResolvedAt, p_IsResolved, p_id_analysis)
+        RETURNING ID_Alert INTO p_id;
 
         DBMS_OUTPUT.PUT_LINE('Alert inserido com sucesso.');
         COMMIT;
@@ -218,9 +215,6 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Erro ao inserir Alerta: ' || SQLERRM);
         ROLLBACK;
 END Insert_LogAlert;
-/
-
-EXECUTE Insert_LogAlert('Sobreaquecimento no Reator', TIMESTAMP '2024-11-11 12:52:07', TIMESTAMP '2024-11-11 13:01:21', '1', 1);
 /
 
 SELECT * FROM NUCLEARPLANT;
