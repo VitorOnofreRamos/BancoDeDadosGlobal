@@ -217,6 +217,30 @@ EXCEPTION
 END Insert_LogAlert;
 /
 
+DECLARE
+    v_id_nuclearplant NUMBER;
+    v_id_metric NUMBER;
+    v_id_sensor NUMBER;
+    v_id_sensortype NUMBER;
+    v_id_analysis NUMBER;
+    v_id_logalert NUMBER;
+BEGIN
+    insert_nuclearplant('Usina Power Max', 123, 2, v_id_nuclearplant);
+    DBMS_OUTPUT.PUT_LINE('Usina com Id: ' || v_id_nuclearplant || ', inserida.');
+    insert_metric(TIMESTAMP '2024-11-10 07:20:00', 700, 50, 80, v_id_nuclearplant, v_id_metric);
+    DBMS_OUTPUT.PUT_LINE('Metrica com Id: ' || v_id_metric || ', inserida.');
+    insert_sensor('Sensor de Temperatura do Reator', 'No maquinário do reator', '1', v_id_nuclearplant, v_id_sensor);
+    DBMS_OUTPUT.PUT_LINE('Sensor com Id: ' || v_id_sensor || ', inserido.');
+    insert_sensortype('Sensor de Temperatura', v_id_sensor, v_id_sensortype);
+    DBMS_OUTPUT.PUT_LINE('Tipo de Sensor com Id: ' || v_id_sensortype || ', inserido.');
+    insert_analysis(300, TIMESTAMP '2024-11-11 12:52:07', v_id_sensor, v_id_analysis);
+    DBMS_OUTPUT.PUT_LINE('Analise com Id: ' || v_id_analysis || ', inserida.');
+    insert_logalert('Sobreaquecimento no Reator', TIMESTAMP '2024-11-11 12:52:07', null, '0', v_id_analysis, v_id_logalert);
+    DBMS_OUTPUT.PUT_LINE('Log de alerta com Id: ' || v_id_logalert || ', inserido.');
+END;
+/
+
+
 SELECT * FROM NUCLEARPLANT;
 SELECT * FROM METRIC;
 SELECT * FROM SENSOR;
